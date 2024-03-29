@@ -1,6 +1,6 @@
 ---
 title: "TD2024"
-author: "Franziska Schmitt"
+author: "Franziska Schmitt, Gerrit Merschmeier"
 date: '2024-03-28'
 output: html_document
 ---
@@ -9,22 +9,27 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Questions to be answered/ analysed:
+1. What is the average spending per receipt?
+2. What is the most frequently purchased item?
+3. How does the price of this most frequently purchased item change over time?
+4. Is there a difference in spending habits depending on the days of the week (weekdays/ weekends)?
+5. Which categories do customers spend the most money on?
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r}
+setwd("data")
+# all text files
+text_files <- list.files(pattern = "\\.txt$")
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+file_contents <- list()
 
-```{r cars}
-summary(cars)
+#read in each text file
+for (file in text_files) {
+  file_contents[[file]] <- readLines(file)
+}
+
+# access the contents of the first file
+print(file_contents[[1]])
+
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
